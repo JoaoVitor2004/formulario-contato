@@ -1,0 +1,85 @@
+.container-principal {
+  max-width: 500px;
+  background-color: #FFFFFF;
+  padding: 30px;
+  border-radius: 10px;
+  margin: 20px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.flex-direction {
+  flex-direction: column;
+}
+
+.aparencia {
+  appearance: none;
+}
+
+.background {
+  background: rgba(0, 0, 0, 0.526);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 200px;
+  max-width: 90%;
+  background-color: white;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.485);
+  color: black;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.btn-fechar {
+  background-color: red;
+  color: white;
+  width: 80px;
+  height: 40px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  opacity: 0.7;
+  transition: 0.2s ease-in-out;
+}
+
+.btn-fechar:hover {
+  opacity: 1;
+}
+
+.mensagem-sucesso {
+  position: fixed;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: hsl(187, 24%, 22%);
+  color: white;
+  padding: 20px 40px;
+  border-radius: 10px;
+  max-width: 80%;
+  width: 500px;
+}
