@@ -1,6 +1,5 @@
 import './App.css'
 import { useState, useRef } from 'react'
-import Img from '../contact-form-main/assets/images/icon-success-check.svg'
 
 function App() {
 
@@ -67,7 +66,6 @@ function App() {
         sucesso && (
           <div className='mensagem-sucesso'>
               <div className='d-flex align-items-center gap-3 mb-3'>
-                <img src={Img} alt="icone de sucesso"/>
                 <h4>Message Sent!</h4>
               </div>
               <p>Thanks for completing the form. We'll be in touch soon!</p>
