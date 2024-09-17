@@ -13,6 +13,8 @@ function App() {
   const emailRef = useRef(null)
   const messageRef = useRef(null)
 
+  const body = document.body
+
   function validarEmail(email) {
     const regex = new RegExp(
       /^[a-zA-Z0-9._-]+@[a-zA-Z]+\.[a-zA-Z]{2,}$/
@@ -25,30 +27,35 @@ function App() {
     return false
   }
 
+  function exibirErro() {
+    setModal(true)
+    body.addEventListener('click', () => setModal(false))
+  }
+
   function handleClick(e) {
 
     e.preventDefault()
 
     if (firstName.current.value === '') {
-      setModal(true)
+      exibirErro()
       settext('Digite o seu nome')
       return
     }
 
     if (lastName.current.value === '') {
-      setModal(true)
+      exibirErro()
       settext('Digite o seu sobrenome')
       return
     }
 
     if (!validarEmail(emailRef.current.value)) {
-      setModal(true)
+      exibirErro()
       settext('Digite um email valido!')
       return
     }
     
     if (messageRef.current.value === '' || messageRef.current.value.length < 10) {
-      setModal(true)
+      exibirErro()
       settext('Digite uma mensagem por favor')
       return
     }
@@ -78,7 +85,7 @@ function App() {
             <div className="background"></div>
             <div className="modal">
               <button className='btn-fechar' onClick={() => setModal(false)}>X</button>
-              <h2 id='text-error'>{text}</h2>
+              <h2 className='text-modal'>{text}</h2>
             </div>
           </>
         )
