@@ -3,7 +3,6 @@ import { useState, useRef } from 'react'
 
 function App() {
 
-  const [modal, setModal] = useState(false)
   const [sucesso, setSucesso] = useState(false)
   const [text, settext] = useState('')
 
@@ -12,6 +11,8 @@ function App() {
   const lastName = useRef(null)
   const emailRef = useRef(null)
   const messageRef = useRef(null)
+  const modalRef = useRef(null)
+  const backgroundRef = useRef(null)
 
   const body = document.body
 
@@ -28,8 +29,8 @@ function App() {
   }
 
   function exibirErro() {
-    setModal(true)
-    body.addEventListener('click', () => setModal(false))
+    modalRef.current.classList.toggle('hide')
+    backgroundRef.current.classList.toggle('hide')
   }
 
   function handleClick(e) {
@@ -53,7 +54,7 @@ function App() {
       settext('Digite um email valido!')
       return
     }
-    
+
     if (messageRef.current.value === '' || messageRef.current.value.length < 10) {
       exibirErro()
       settext('Digite uma mensagem por favor')
@@ -69,25 +70,19 @@ function App() {
 
   return (
     <main className='container-principal'>
+      <div ref={backgroundRef} className="background hide"></div>
+      <div ref={modalRef} className="modal hide">
+        <button className='btn-fechar' onClick={exibirErro}>X</button>
+        <h2 className='text-modal'>{text}</h2>
+      </div>
       {
         sucesso && (
           <div className='mensagem-sucesso'>
-              <div className='d-flex align-items-center gap-3 mb-3'>
-                <h4>Message Sent!</h4>
-              </div>
-              <p>Thanks for completing the form. We'll be in touch soon!</p>
-          </div>
-        )
-      }
-      {
-        modal && (
-          <>
-            <div className="background"></div>
-            <div className="modal">
-              <button className='btn-fechar' onClick={() => setModal(false)}>X</button>
-              <h2 className='text-modal'>{text}</h2>
+            <div className='d-flex align-items-center gap-3 mb-3'>
+              <h4>Message Sent!</h4>
             </div>
-          </>
+            <p>Thanks for completing the form. We'll be in touch soon!</p>
+          </div>
         )
       }
       <h2 className='title'>Contact us</h2>
@@ -95,7 +90,7 @@ function App() {
         <div className='row mb-3'>
           <div className="col-12 col-md-6 col-lg-6 mb-3 mb-md-0 mb-lg-0">
             <label htmlFor='name' className="form-label mb-2">First name</label>
-            <input ref={firstName} type="text" name="name" id="name" className='form-control border-3'/>
+            <input ref={firstName} type="text" name="name" id="name" className='form-control border-3' />
           </div>
           <div className="col-12 col-md-6 col-lg-6">
             <label className="form-label mb-2" htmlFor='sobrename'>Last name</label>
@@ -109,7 +104,7 @@ function App() {
         <div className="row mb-3 d-flex">
           <label className="form-label mb-3">Query type</label>
           <div className="col-12 col-md-6 col-lg-6 d-flex gap-3">
-            <input type="radio" name="type" id="general" className='form-check-input' checked/>
+            <input type="radio" name="type" id="general" className='form-check-input' checked />
             <label className="form-label" htmlFor='general'>General Enquiry</label>
           </div>
           <div className="col-12 col-md-6 col-lg-6 d-flex gap-3 border-3">
