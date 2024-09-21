@@ -117,7 +117,7 @@ function App() {
           <textarea ref={messageRef} name="message" id="message" class="form-control w-100 aparencia border-3" aria-label="With textarea"></textarea>
         </div>
         <div className='w-100 d-flex gap-3 mb-3'>
-          <input type="checkbox" name="accept" id="accept" className='form-check-input' />
+          <input checked type="checkbox" name="accept" id="accept" className='form-check-input' />
           <label className="form-label" htmlFor='accept'>I consent to being contacted by the team</label>
         </div>
         <input type="submit" value="Submit" className='btn btn-success p-2 rounded-2 w-100 text-white' />
